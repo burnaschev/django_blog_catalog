@@ -1,0 +1,73 @@
+[
+{
+  "model": "catalog.category",
+  "pk": 1,
+  "fields": {
+    "name_category": "Ноутбуки",
+    "description_category": ""
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 2,
+  "fields": {
+    "name_category": "Смартфоны",
+    "description_category": "Очень быстрые!"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 3,
+  "fields": {
+    "name_category": "Аксессуары",
+    "description_category": "На любой выбор!"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "name_category": "Компьютеры",
+    "description_category": "На любой бюджет!"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 1,
+  "fields": {
+    "name": "macBook",
+    "description": "Ультра быстрый",
+    "preview": "",
+    "category": 1,
+    "price": 124000,
+    "create_date": "2023-08-15",
+    "date_change": "2023-08-18"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 2,
+  "fields": {
+    "name": "HP",
+    "description": "Ультра тонкий",
+    "preview": "",
+    "category": 1,
+    "price": 60000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 3,
+  "fields": {
+    "name": "iPhone 14 pro",
+    "description": "",
+    "preview": "",
+    "category": 2,
+    "price": 12000,
+    "create_date": null,
+    "date_change": null
+  }
+}
+]
