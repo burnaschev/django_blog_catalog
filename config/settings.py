@@ -77,7 +77,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'catalog',
         'USER': 'postgres',
-        'PASSWORD': '2486'
+        'PASSWORD': '2**6'
     }
 }
 
