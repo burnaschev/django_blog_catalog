@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.generic import ListView
 
 from catalog.apps import CatalogConfig
 from catalog.models import Product, Category
@@ -15,24 +14,18 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-class CategoryListView(ListView):
-    model = Category
-    template_name = 'catalog/category.html'
+def category(request):
+    context = {
+        'object_list': Category.objects.all(),
+        'title': 'Категорий',
+    }
+    return render(request, 'catalog/category.html', context)
 
 
-class ProductListView(ListView):
-    model = Product
-    template_name = 'catalog/product.html'
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(category=self.kwargs.get('pk'))
-        return queryset
-
-    def get_context_data(self, *args, **kwargs):
-        context_data = super().get_context_data(*args, **kwargs)
-        category_item = Category.objects.get(pk=self.kwargs.get('pk'))
-
-        context_data['title'] = f'Продукт категорий {category_item.name_category}'
-
-        return context_data
+def product(request, pk):
+    category_item = Category.objects.get(pk=pk)
+    context = {
+        'object_list': Product.objects.filter(category_id=pk),
+        'title': f'Продукт категорий {category_item.name_category}',
+    }
+    return render(request, 'catalog/product.html', context)
