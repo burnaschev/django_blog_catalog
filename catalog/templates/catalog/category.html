@@ -13,7 +13,7 @@
                         <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                             <li>{{ object.description_category|slice:100 }}</li>
                         </ul>
-                        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product' object.pk %}">Перейти</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_list' object.pk%}">Перейти</a>
                     </div>
                 </div>
             </div>

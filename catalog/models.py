@@ -30,3 +30,23 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+
+class Version(models.Model):
+
+    SIGN_TRUE = True
+    SIGN_FALSE = False
+    SIGN = ((SIGN_TRUE, 'Активен',),
+            (SIGN_FALSE, 'Неактивен'),)
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
+    version_number = models.IntegerField(verbose_name='Номер версий')
+    version_name = models.CharField(max_length=100, verbose_name='Название версий')
+    version_sign = models.BooleanField(default=SIGN_TRUE, choices=SIGN, verbose_name='Признак версий')
+
+    def __str__(self):
+        return f'{self.version_name}/{self.version_number}'
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версий'
