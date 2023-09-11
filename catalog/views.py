@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
@@ -18,7 +19,7 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     template_name = 'catalog/category.html'
     extra_context = {
@@ -26,9 +27,10 @@ class CategoryListView(ListView):
     }
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'catalog/product_list.html'
+    success_url = reverse_lazy('catalog:category')
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -45,13 +47,20 @@ class ProductListView(ListView):
         return context_data
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:category')
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.users = self.request.user
+        self.object.save()
 
-class ProductUpdateView(UpdateView):
+        return super().form_valid(form)
+
+
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:category')
@@ -82,10 +91,10 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:category')

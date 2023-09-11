@@ -36,7 +36,7 @@
   "pk": 1,
   "fields": {
     "name": "macBook",
-    "description": "Ультра быстрый",
+    "description": "macBook",
     "preview": "",
     "category": 1,
     "price": 124000,
@@ -62,12 +62,146 @@
   "pk": 3,
   "fields": {
     "name": "iPhone 14 pro",
-    "description": "",
+    "description": "iPhone 14 pro",
     "preview": "",
     "category": 2,
     "price": 12000,
     "create_date": null,
     "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 5,
+  "fields": {
+    "name": "Air Pods",
+    "description": "Air Pods",
+    "preview": "",
+    "category": 3,
+    "price": 23000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 6,
+  "fields": {
+    "name": "DNS",
+    "description": "Отечественный!",
+    "preview": "",
+    "category": 4,
+    "price": 25000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 7,
+  "fields": {
+    "name": "AsRock",
+    "description": "Лучший",
+    "preview": "media/5f81227a7983e36f2b580c32af64b0fa.png",
+    "category": 4,
+    "price": 23000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 10,
+  "fields": {
+    "name": "ПК",
+    "description": "ПК",
+    "preview": "catalog/9459d54d801e869d11b9c9c0bda2a535.jpg",
+    "category": 4,
+    "price": 2131123,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 11,
+  "fields": {
+    "name": "Iphone X",
+    "description": "Хороший",
+    "preview": "",
+    "category": 2,
+    "price": 100000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 12,
+  "fields": {
+    "name": "Iphone X",
+    "description": "Хороший",
+    "preview": "",
+    "category": 2,
+    "price": 100000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 18,
+  "fields": {
+    "name": "Honor",
+    "description": "Honor",
+    "preview": "",
+    "category": 2,
+    "price": 25000,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 19,
+  "fields": {
+    "name": "Биржа",
+    "description": "фывыфв",
+    "preview": "",
+    "category": 1,
+    "price": 22321,
+    "create_date": null,
+    "date_change": null
+  }
+},
+{
+  "model": "catalog.version",
+  "pk": 7,
+  "fields": {
+    "product": 5,
+    "version_number": 123,
+    "version_name": "12 выпуск",
+    "version_sign": true
+  }
+},
+{
+  "model": "catalog.version",
+  "pk": 10,
+  "fields": {
+    "product": 18,
+    "version_number": 2,
+    "version_name": "Линейка g",
+    "version_sign": true
+  }
+},
+{
+  "model": "catalog.version",
+  "pk": 11,
+  "fields": {
+    "product": 1,
+    "version_number": 3,
+    "version_name": "Линейка g",
+    "version_sign": true
   }
 }
 ]

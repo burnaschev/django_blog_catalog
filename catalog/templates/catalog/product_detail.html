@@ -20,6 +20,9 @@
                 <div class="card-footer h5">
                     Цена: {{ object.price }} рублей
                 </div>
+                <div class="card-footer">
+                    {{ object.users|default:'Нету пользователя' }}
+                </div>
             </div>
         </div>
     </div>

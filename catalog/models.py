@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
@@ -23,6 +24,9 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='Цена')
     create_date = models.DateField(max_length=50, **NULLABLE, verbose_name='Дата создания')
     date_change = models.DateField(max_length=50, **NULLABLE, verbose_name='Дата последнего изменения')
+    users = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Пользователь'
+    )
 
     def __str__(self):
         return f"{self.name} {self.description} {self.preview} {self.price}"
@@ -33,7 +37,6 @@ class Product(models.Model):
 
 
 class Version(models.Model):
-
     SIGN_TRUE = True
     SIGN_FALSE = False
     SIGN = ((SIGN_TRUE, 'Активен',),

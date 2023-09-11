@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'catalog',
     'blog',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = '/'
+
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "burnaschev.artur@yandex.ru"
+EMAIL_HOST_PASSWORD = "rjynfrn***!"
+EMAIL_USE_SSL = True

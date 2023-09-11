@@ -29,9 +29,12 @@
                             <a class="p-2 btn btn-outline-primary " href="{% url 'catalog:product_edit' object.pk %}">Редактирование</a>
                             <a class="p-2 btn btn-outline-danger " href="{% url 'catalog:product_delete' object.pk %}">Удаление</a>
                         </div>
+                        <div class="mt-1">
+                            <button type="submit" href="#" class="btn btn-outline-secondary">Купить</button>
+                        </div>
                         {% for version in object.version_set.all %}
                             {% if version.version_sign %}
-                                <div class="card-footer">
+                                <div class="card-footer mt-1">
                                     Номер активной версий: {{ version.version_number }}
                                 </div>
                             {% endif %}
