@@ -27,7 +27,10 @@
                             <a class="p-2 btn btn-outline-success "
                                href="{% url 'catalog:product_view' object.pk %}">Обзор</a>
                             <a class="p-2 btn btn-outline-primary " href="{% url 'catalog:product_edit' object.pk %}">Редактирование</a>
-                            <a class="p-2 btn btn-outline-danger " href="{% url 'catalog:product_delete' object.pk %}">Удаление</a>
+                            {% if perms.catalog_delete_product %}
+                                <a class="p-2 btn btn-outline-danger "
+                                   href="{% url 'catalog:product_delete' object.pk %}">Удаление</a>
+                            {% endif %}
                         </div>
                         <div class="mt-1">
                             <button type="submit" href="#" class="btn btn-outline-secondary">Купить</button>

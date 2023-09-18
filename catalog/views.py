@@ -1,4 +1,5 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
@@ -7,14 +8,17 @@ from django.views.generic import ListView, CreateView, UpdateView, DetailView, D
 from catalog.apps import CatalogConfig
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Category, Version
+from catalog.services import get_categories_cache
 
 app_name = CatalogConfig
 
 
+@login_required
 def index(request):
     return render(request, 'catalog/home.html')
 
 
+@login_required
 def contacts(request):
     return render(request, 'catalog/contacts.html')
 
@@ -25,6 +29,11 @@ class CategoryListView(LoginRequiredMixin, ListView):
     extra_context = {
         'title': 'Категорий'
     }
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['object_list'] = get_categories_cache()
+        return context_data
 
 
 class ProductListView(LoginRequiredMixin, ListView):
@@ -95,6 +104,7 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
 
-class ProductDeleteView(LoginRequiredMixin, DeleteView):
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:category')
+    permission_required = 'catalog.delete_product'
